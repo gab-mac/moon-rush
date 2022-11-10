@@ -1,0 +1,7 @@
+{
+  "name": "moon-rush",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
