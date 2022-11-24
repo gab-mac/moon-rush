@@ -1,9 +1,3 @@
-import { IonApp, IonRouterOutlet, IonSplitPane, setupIonicReact } from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
-import { Redirect, Route } from 'react-router-dom';
-import Menu from './components/Menu';
-import Page from './pages/Page';
-
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
 
@@ -12,35 +6,43 @@ import '@ionic/react/css/normalize.css';
 import '@ionic/react/css/structure.css';
 import '@ionic/react/css/typography.css';
 
-/* Optional CSS utils that can be commented out */
-import '@ionic/react/css/padding.css';
-import '@ionic/react/css/float-elements.css';
-import '@ionic/react/css/text-alignment.css';
-import '@ionic/react/css/text-transformation.css';
-import '@ionic/react/css/flex-utils.css';
-import '@ionic/react/css/display.css';
-
 /* Theme variables */
 import './theme/variables.css';
+
+import {
+  IonApp,
+  setupIonicReact,
+  IonHeader,
+  IonContent,
+  IonToolbar,
+  IonTitle,
+  IonPage,
+} from '@ionic/react';
+import { useState } from 'react';
+import { Modal } from './components/Modal';
+import { FloatingButton } from './components/FloatingButton';
+import { CardSample } from './components/CardSample';
 
 setupIonicReact();
 
 const App: React.FC = () => {
+  const [modalState, setModalState] = useState(false);
+  const numberOfCards = [1, 2, 3, 4, 5, 6, 7, 8];
+
   return (
     <IonApp>
-      <IonReactRouter>
-        <IonSplitPane contentId="main">
-          <Menu />
-          <IonRouterOutlet id="main">
-            <Route path="/" exact={true}>
-              <Redirect to="/page/Inbox" />
-            </Route>
-            <Route path="/page/:name" exact={true}>
-              <Page />
-            </Route>
-          </IonRouterOutlet>
-        </IonSplitPane>
-      </IonReactRouter>
+      <IonPage>
+        <IonHeader>
+          <IonToolbar>
+            <IonTitle>Moon Rush</IonTitle>
+          </IonToolbar>
+        </IonHeader>
+        <IonContent className="ion-padding">
+          {numberOfCards.map(index => <CardSample index={index} key={index} />)}
+          <Modal modalState={modalState} setModalState={setModalState} />
+          <FloatingButton setIsOpen={setModalState} />
+        </IonContent>
+      </IonPage>
     </IonApp>
   );
 };
