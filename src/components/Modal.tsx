@@ -36,7 +36,7 @@ export const Modal: FC<IModalProps> = ({modalState, setModalState}) => {
   return (
     <IonModal ref={modal} isOpen={modalState} onDidDismiss={(ev) => onModalCloses(ev)}>
       <IonHeader>
-        <IonToolbar>
+        <IonToolbar color="primary">
           <IonButtons slot="start">
             <IonButton onClick={() => modal.current?.dismiss()}>Cancel</IonButton>
           </IonButtons>
@@ -48,12 +48,12 @@ export const Modal: FC<IModalProps> = ({modalState, setModalState}) => {
           </IonButtons>
         </IonToolbar>
       </IonHeader>
-      <IonContent className="ion-padding">
-        <IonItem>
+      <IonContent color="primary" className="ion-padding">
+        <IonItem  color="primary">
           <IonLabel position="stacked">Distance</IonLabel>
           <IonInput ref={distanceInput} type="text" placeholder="2200" />
         </IonItem>
-        <IonItem>
+        <IonItem  color="primary">
           <IonLabel position="stacked">Duration</IonLabel>
           <IonInput ref={durationInput} type="text" placeholder="22:22" />
         </IonItem>

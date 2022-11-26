@@ -33,11 +33,11 @@ const App: React.FC = () => {
     <IonApp>
       <IonPage>
         <IonHeader>
-          <IonToolbar>
+          <IonToolbar color="primary">
             <IonTitle>Moon Rush</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <IonContent className="ion-padding">
+        <IonContent color="primary" className="ion-padding">
           {numberOfCards.map(index => <CardSample index={index} key={index} />)}
           <Modal modalState={modalState} setModalState={setModalState} />
           <FloatingButton setIsOpen={setModalState} />

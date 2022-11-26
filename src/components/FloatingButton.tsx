@@ -9,7 +9,7 @@ interface IFloatingButtonProps {
 export const FloatingButton: FC<IFloatingButtonProps> = ({setIsOpen}) => {
   return (
     <IonFab slot='fixed' horizontal='end' vertical='bottom'>
-      <IonFabButton onClick={() => setIsOpen(true)}>
+      <IonFabButton color="tertiary" onClick={() => setIsOpen(true)}>
         <IonIcon icon={add}></IonIcon>
       </IonFabButton>
     </IonFab>
