@@ -12,37 +12,28 @@ import './theme/variables.css';
 import {
   IonApp,
   setupIonicReact,
-  IonHeader,
-  IonContent,
-  IonToolbar,
-  IonTitle,
-  IonPage,
+  IonRouterOutlet,
 } from '@ionic/react';
-import { useState } from 'react';
-import { Modal } from './components/Modal';
-import { FloatingButton } from './components/FloatingButton';
-import { CardSample } from './components/CardSample';
+import { IonReactRouter } from '@ionic/react-router';
+import { Redirect, Route } from 'react-router-dom';
+
+import { DashBoardPage } from './components/DashBoardPage';
+import { LoginPage } from './components/LoginPage';
+import { RegisterPage } from './components/RegisterPage';
 
 setupIonicReact();
 
 const App: React.FC = () => {
-  const [modalState, setModalState] = useState(false);
-  const numberOfCards = [1, 2, 3, 4, 5, 6, 7, 8];
-
   return (
     <IonApp>
-      <IonPage>
-        <IonHeader>
-          <IonToolbar color="primary">
-            <IonTitle>Moon Rush</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <IonContent color="primary" className="ion-padding">
-          {numberOfCards.map(index => <CardSample index={index} key={index} />)}
-          <Modal modalState={modalState} setModalState={setModalState} />
-          <FloatingButton setIsOpen={setModalState} />
-        </IonContent>
-      </IonPage>
+      <IonReactRouter>
+        <IonRouterOutlet>
+          <Route path="/home" component={DashBoardPage} exact={true} />
+          <Route exact path="/" render={() => <Redirect to="/home" />} />
+          <Route path="/login" component={LoginPage} />
+          <Route path="/register" component={RegisterPage} />
+        </IonRouterOutlet>
+      </IonReactRouter>
     </IonApp>
   );
 };

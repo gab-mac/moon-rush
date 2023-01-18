@@ -1,6 +1,12 @@
 /* Ionic Variables and Theming. For more info, please see:
 http://ionicframework.com/docs/theming/ */
 
+@font-face {   
+	font-family: 'BebasNeue';
+	src: url('../../public/assets/fonts/BebasNeue-Regular.ttf');
+}
+
+
 /** Ionic CSS Variables **/
 :root {
 	--ion-color-primary: #2E2C2F;
@@ -66,4 +72,23 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-light-shade: #1e2023;
   --ion-color-light-tint: #383a3e;
 
+	--ion-font-family: 'BebasNeue';
+}
+
+.login-logo  {
+	margin-top: 30px;
+}
+
+.login-page-register-link{
+	color: var(--ion-color-warning);
+	float: right;
+	padding: 20px;
+}
+
+.login-button{
+	margin: 30px;
+}
+
+.login-input-item{
+	margin: 30px;
 }
